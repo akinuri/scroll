@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Scroll</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            font-family: sans-serif;
+            height: 10000px;
+            background-image: linear-gradient(to bottom, white, black);
+        }
+        #state {
+            font-size: 2em;
+            color: hsl(0, 50%, 50%);
+            position: fixed;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+<span id="state">idle</span>
+
+<script src="scroll.js"></script>
+
+<script>
+    var state = document.getElementById("state");
+    
+    var sl = new Scroll(200);
+    
+    sl.addEventListener("start", function () {
+        state.textContent = "started";
+    });
+    
+    sl.addEventListener("scroll", function () {
+        state.textContent = "scrolling";
+    });
+    
+    sl.addEventListener("ended", function () {
+        state.textContent = "stopped";
+    });
+</script>
+
+</body>
+</html>

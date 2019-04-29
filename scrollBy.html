@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Blank HTML5 Page</title>
+    <!-- <meta name="description" content="This is a blank HTML5 template."> -->
+    <!-- <meta name="keywords" content="html5, blank, page, template"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css" /> -->
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico" /> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: inherit;
+            color: inherit;
+            font-size: inherit;
+            font-family: inherit;
+            line-height: inherit;
+        }
+        body {
+            font-family: sans-serif;
+            box-sizing: border-box;
+            background-color: hsl(0, 0%, 90%);
+            height: 10000px;
+            background-image: linear-gradient(to bottom, white, black);
+        }
+    </style>
+</head>
+<body>
+
+<script src="scroll.js"></script>
+<script>
+    
+    sw_start = null;
+    sw_stop  = null;
+    
+    var obj = {
+        "100": [
+            165.784999972675,
+            159.9199999589473,
+            156.19999998016283,
+            157.2649999987334,
+            157.25499998079613,
+            157.81000001588836,
+            157.27999999653548,
+            156.9850000203587,
+            158.69500000262633,
+            158.08999999426305
+        ],
+        "200": [
+            218.4549999772571,
+            217.45999996783212,
+            218.03000000072643,
+            217.66999999526888,
+            217.03000001143664,
+            216.89499997301027,
+            218.16499998094514,
+            217.89500002050772,
+            218.16000000108033,
+            216.3200000184588
+        ],
+        "400": [
+            302.67999997595325,
+            318.99500004947186,
+            316.65499998489395,
+            318.9850000315346,
+            317.0050000306219,
+            318.9949999912642,
+            318.62500002607703,
+            317.82499998807907,
+            318.6400000238791,
+            318.5950000304729,
+            317.8450000239536
+        ],
+        "600": [
+            384.9550000275485,
+            383.37999996729195,
+            398.3199999900535,
+            385.81999997841194,
+            385.41499997954816,
+            386.9149999925867,
+            385.27999999932945,
+            398.44000003067777,
+            399.00999994715676,
+            385.1050000055693
+        ],
+        "800": [
+            451.85000002384186,
+            461.96499997749925,
+            450.7899999851361,
+            451.8900000373833,
+            463.3249999722466,
+            451.94000001065433,
+            460.8700000215322,
+            461.0499999951571,
+            456.5700000501238,
+            461.8000000016764
+        ],
+        "1000": [
+            525.0800000037998,
+            524.2950000218116,
+            524.61499995552,
+            518.8199999509379,
+            527.8349999687634,
+            524.9999999767169,
+            519.9900000123307,
+            529.4999999576248,
+            533.0799999763258,
+            523.0550000094809
+        ]
+    };
+    var averages = {
+        "100" : array_avg(obj["100"]),
+        "200" : array_avg(obj["200"]),
+        "400" : array_avg(obj["400"]),
+        "600" : array_avg(obj["600"]),
+        "800" : array_avg(obj["800"]),
+        "1000": array_avg(obj["1000"]),
+    };
+    var changes = [
+        averages["100"],
+        averages["200"] / 2,
+        averages["400"] / 4,
+        averages["600"] / 6,
+        averages["800"] / 8,
+        averages["1000"] / 10,
+    ];
+    
+    function array_sum(array) {
+        if (array.length) {
+            return array.reduce(function (sum, currentValue) {
+                return sum + currentValue;
+            });
+        }
+        return null;
+    }
+    function array_avg(array) {
+        return array_sum(array) / array.length;
+    }
+    
+    var sl = new Scroll(200);
+    
+    sl.addEventListener("start", function () {
+        sw_start = performance.now();
+    });
+    
+    sl.addEventListener("ended", function () {
+        sw_stop = performance.now();
+        sw_diff = sw_stop - sw_start - this.timeout.delay;
+        obj["800"].push(sw_diff);
+    });
+    
+</script>
+
+</body>
+</html>
