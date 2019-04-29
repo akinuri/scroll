@@ -1,7 +1,7 @@
 # scroll.js
 
 ```javascript
-var sl = new Scroll(200);
+var sl = new Scroll(200); // after 200 ms inactivity, "ended" event fires
 
 sl.addEventListener("start", function (e) {
     console.log("started", e);
