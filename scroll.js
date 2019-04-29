@@ -8,7 +8,7 @@ function Scroll(delay) {
         ended  : null,
     };
     this.timeout = {
-        delay  : delay || 100,
+        delay  : delay || 150,
         handle : null,
     };
     this.handler = Scroll.handler.bind(this);
