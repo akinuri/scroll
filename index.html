@@ -30,15 +30,18 @@
     var sl = new Scroll(200);
     
     sl.addEventListener("start", function () {
+        console.log("started");
         state.textContent = "started";
     });
     
     sl.addEventListener("scroll", function () {
+        console.log("scrolling");
         state.textContent = "scrolling";
     });
     
     sl.addEventListener("ended", function () {
-        state.textContent = "stopped";
+        console.log("ended");
+        state.textContent = "ended";
     });
 </script>
 
