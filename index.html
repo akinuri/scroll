@@ -29,8 +29,8 @@
     
     var sl = new Scroll(200);
     
-    sl.addEventListener("start", function () {
-        console.log("started");
+    sl.addEventListener("start", function (e) {
+        console.log("started", e);
         state.textContent = "started";
     });
     

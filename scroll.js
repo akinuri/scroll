@@ -15,24 +15,24 @@ function Scroll(delay) {
     window.addEventListener("scroll", this.handler);
 }
 
-Scroll.handler = function () {
+Scroll.handler = function (e) {
     if (this.initialY == 0) {
         if (this.timeout.handle == null) {
             if (this.callbacks.start) {
-                this.callbacks.start.call(this);
+                this.callbacks.start.call(this, e);
             }
         }
         if (this.timeout.handle !== null) {
             clearTimeout(this.timeout.handle);
         }
         if (this.callbacks.scroll) {
-            this.callbacks.scroll.call(this);
+            this.callbacks.scroll.call(this, e);
         }
         var self = this;
         this.timeout.handle = setTimeout(function () {
             self.timeout.handle = null;
             if (self.callbacks.ended) {
-                self.callbacks.ended.call(self);
+                self.callbacks.ended.call(self, e);
             }
         }, this.timeout.delay);
     } else {

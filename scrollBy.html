@@ -2,12 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Blank HTML5 Page</title>
-    <!-- <meta name="description" content="This is a blank HTML5 template."> -->
-    <!-- <meta name="keywords" content="html5, blank, page, template"> -->
+    <title>scrollBy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" type="text/css" href="styles.css" /> -->
-    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico" /> -->
     <style>
         * {
             margin: 0;
@@ -139,17 +135,17 @@
         return array_sum(array) / array.length;
     }
     
-    var sl = new Scroll(200);
+    // var sl = new Scroll(200);
     
-    sl.addEventListener("start", function () {
-        sw_start = performance.now();
-    });
+    // sl.addEventListener("start", function () {
+        // sw_start = performance.now();
+    // });
     
-    sl.addEventListener("ended", function () {
-        sw_stop = performance.now();
-        sw_diff = sw_stop - sw_start - this.timeout.delay;
-        obj["800"].push(sw_diff);
-    });
+    // sl.addEventListener("ended", function () {
+        // sw_stop = performance.now();
+        // sw_diff = sw_stop - sw_start - this.timeout.delay;
+        // obj["800"].push(sw_diff);
+    // });
     
 </script>
 
