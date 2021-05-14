@@ -5,7 +5,7 @@ function Scroll(delay) {
     this.callbacks = {
         start  : null,
         scroll : null,
-        ended  : null,
+        end    : null,
     };
     this.timeout = {
         delay  : delay || 150,
@@ -31,8 +31,8 @@ Scroll.handler = function (e) {
         var self = this;
         this.timeout.handle = setTimeout(function () {
             self.timeout.handle = null;
-            if (self.callbacks.ended) {
-                self.callbacks.ended.call(self, e);
+            if (self.callbacks.end) {
+                self.callbacks.end.call(self, e);
             }
         }, this.timeout.delay);
     } else {
